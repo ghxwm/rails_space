@@ -2,16 +2,26 @@
 <html>
 <head>
   <title><%=@title %></title>
+  <%= javascript_include_tag 'application' %>
   <%= stylesheet_link_tag 'site' %>
 </head>
 <body>
 	<div id='whole_page'>
 		<div id='header'>RailsSpace</div>
 		<div id="nav">
-			<%= nav_link 'Home' %>
-			<%= nav_link 'About Us',"site","about" %>
-			<%= nav_link 'Help',"site","help" %>
-			<%= nav_link 'Register',"user","register" %>
+			<span style="float:right">
+				<% if logged_in? %>
+					<%= nav_link "Hub","site","index" %> |
+					<%= nav_link "Logout","user" %>
+				<% else %>
+					<%= nav_link "Register","user" %> |
+					<%= nav_link "Login","user" %>
+				<% end %>
+			</span>
+			
+			<%= nav_link 'Home',"site","index" %> |
+			<%= nav_link 'About Us',"site","about" %> |
+			<%= nav_link 'Help',"site" %> 
 		</div>
 		<div id="content">
 			<% if flash[:notice] -%>
@@ -20,10 +30,34 @@
 			<%= yield %>
 		</div>
 		
-		<%= debug(params) if ENV["RAILS_ENV"] == "development" %>
+		<%	if ENV["RAILS_ENV"] == "development" %>
+			<div id="debug">
+				<a href="#" onclick="$('.debug_info').toggle();return false;">params</a>
+				<a href="#" onclick="$('.debug_info').toggle();return false;">session</a>
+				<a href="#" onclick="$('.debug_info').toggle();return false;">env</a>
+				<a href="#" onclick="$('.debug_info').toggle();return false;">request</a>
+				
+				<fieldset id="params_debug_info" class="debug_info" style="display:none">
+					<legend>params info</legend>
+					<%= debug(params) %>
+				</fieldset>
+				
+				<fieldset id="session_debug_info" class="debug_info" style="display:none;">
+					<legend>session info</legend>
+					<%= debug(session) %>
+				</fieldset>
+				
+				<fieldset id="env_debug_info" class="debug_info" style="display:none;">
+					<legend>env info</legend>
+					<%= debug(ENV) %>
+				</fieldset>
+				
+				<fieldset id="request_debug_info" class="debug_info" style="display:none;">
+					<legend>request info</legend>
+					<%= debug(request) %>
+				</fieldset>
+			</div>
+		<% end %>
 	</div>
-
-	
-
 </body>
 </html>

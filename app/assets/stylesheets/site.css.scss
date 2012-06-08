@@ -66,26 +66,29 @@ html legend {
 
 fieldset {
   background: #ddd;
-}
-legend {
+  
+  legend {
   color: white;
   background: maroon;
-  padding: .4em 1em;
+  padding: .4em 1em;}
 }
-label {
+
+
+.form_row {
+  white-space: nowrap;
+  padding-bottom: .5em;
+  
+  label {
   width: 10em;
   float: left;
   text-align: right;
   margin-right: 0.2em;
-  display: block;
+  display: block;}
+  
+  .submit {
+  margin-left: 15em;}
 }
-.form_row {
-  white-space: nowrap;
-  padding-bottom: .5em;
-}
-.submit {
-  margin-left: 15em;
-}
+
 
 .debug_dump {
   text-align: left;

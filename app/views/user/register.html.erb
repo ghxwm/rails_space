@@ -1,27 +1,27 @@
-<h2>Register</h2>
+<h2><%=t("app.Register")%></h2>
 <%= form_for :user do |form| %>  <!-- :user 产生input输入框user[screen_name] -->
 	<fieldset>
-		<legend>Enter You Details</legend>
+		<legend><%=t("app.Enter Your Details")%></legend>
 		<dir id="error_msg">
 			<%=  error_message_for @user %>
 		</dir>
 		<div class="form_row">
-			<label for="screen_name">Screen name:</label>
+			<%= form.label :screen_name,t("app.screen_name") %>:
 			<%= form.text_field :screen_name ,:size => 20, :maxlength => 40 %>
 		</div>
 		
 		<div class="form_row">
-			<label for="email">Email:</label>
+			<%= form.label :email,t("app.email") %>:
 			<%= form.text_field :email,:size => 30,:maxlength => 50 %>
 		</div>
 		
 		<div class="form_row">
-			<label for="password">Password:</label>
+			<%= form.label :password,t("app.password") %>:
 			<%= form.text_field :password,:size => 10,:maxlength => 40 %>
 		</div>
 		
 		<div class="form_row">
-			<%= submit_tag "Register!",:class => "submit" %>
+			<%= submit_tag t("app.Register"),:class => "submit" %>
 		</div>
 	</fieldset>
 <% end %>

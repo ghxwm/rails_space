@@ -16,13 +16,25 @@ class User < ActiveRecord::Base
   validates_length_of      :screen_name, :within => SCREEN_NAME_RANGE
   validates_length_of      :password,    :within => PASSWORD_RANGE
   validates_length_of      :email,       :maximum => EMAIL_MAX_LENGTH
-  validates_presence_of   :email
+  validates_presence_of    :email
   
   validate :other_validate
   
   def other_validate
-    errors.add(:email,"must be valid.") unless email.include? "@"
-    errors.add(:screen_name,"can not include space") if screen_name.include? " "
+    errors.add(:email,"格式不正确") unless email.include? "@"
+    errors.add(:screen_name,"不能有空格") if screen_name.include? " "
   end
   
+  #登录
+  def login!(session)
+    session[:user_id] = self.id
+  end
+  #注销
+  def self.logout!(session)
+    session[:user_id] = nil
+  end
+  #清空密码
+  def clear_password!()
+    self.password = nil  #必须加self，否则password视为局部变量
+  end
 end

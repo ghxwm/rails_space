@@ -1,0 +1,18 @@
+<h2><%=t("app.login")%></h2>
+<%= form_for :user do|f| %>
+	<fieldset>
+		<legend><%=t("app.Enter Your Details")%></legend>
+		<div class="form_row">
+			<%= f.label :screen_name,t("app.screen_name") %>:
+    		<%= f.text_field :screen_name %>
+    	</div>
+    	<div class="form_row">
+    		<%= f.label :password,t("app.password") %>:
+    		<%= f.text_field :password %>
+    	</div>
+    	
+    	<div class="form_row"> 
+    		<%= f.submit t("app.login"), :class => "submit" %>
+    	</div>
+	</fieldset>
+<% end %>

@@ -10,9 +10,14 @@
     		<%= f.label :password,t("app.password") %>:
     		<%= f.text_field :password %>
     	</div>
+    	<div class="form_row">
+    		<%= f.check_box :remember_me,:class => "remember_me" %>
+    		<%= content_tag(:span,"记住我一周") %>
+    	</div>
     	
     	<div class="form_row"> 
     		<%= f.submit t("app.login"), :class => "submit" %>
     	</div>
 	</fieldset>
 <% end %>
+

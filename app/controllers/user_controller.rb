@@ -4,6 +4,8 @@ class UserController < ApplicationController
   
   #用户首页
   def index
+    @titile = "个人中心"
+    @user = User.find(session[:user_id])
   end
   #用户注册
   def register

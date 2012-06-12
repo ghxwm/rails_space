@@ -1,0 +1,13 @@
+<% %>标签之间需要加入符号"="才能输出内容,即<%= %>
+form_for方法的参数可在表单输入框中生成user[passowrd]以便于传递参数
+修改user的单复数形式都为user,并在User模型中指定表名为users.
+String % arg 字符串格式化
+%{Ruby is fun.}  equivalent to "Ruby is fun."
+%Q{ Ruby is fun. } equivalent to " Ruby is fun. "
+%q[Ruby is fun.]  equivalent to a single-quoted string
+%x!ls! equivalent to back tick command output `ls`
+if else 语句结构,在else后才加end
+用sqlite数据库做测试时Pemission deny,解决方法:关闭sqlite客户端软件sqliteman
+%s创建符号
+%W创建数组
+%q,%Q,%r,%x操作字符串

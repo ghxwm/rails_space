@@ -1,3 +1,4 @@
+# encoding: utf-8
 class UserController < ApplicationController
   include ApplicationHelper
   layout "site"
@@ -15,6 +16,7 @@ class UserController < ApplicationController
       #raise params[:user].inspect
       @user = User.new(params[:user])
       if @user.save  #注册成功
+        @user.login(session)
         flash[:notice] = "User #{@user.screen_name} created!"
         redirect_to(:action => index)
       else  #失败,重新注册

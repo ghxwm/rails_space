@@ -1,3 +1,4 @@
+# encoding: utf-8
 class SiteController < ApplicationController
   def index
     @title = 'Welcome to RailsSpace';

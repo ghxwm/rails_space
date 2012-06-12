@@ -1,3 +1,4 @@
+
 module SiteHelper
   #验证没通过时,生成的错误信息
   def error_message_for(record)
